@@ -17,6 +17,8 @@ def check_character(character)
      '^' => 3
   }
   case
+  when @stack.last == character
+    return
   when character =~ /\d/ 
     @buffer += character
     return

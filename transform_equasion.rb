@@ -12,13 +12,11 @@ end
 def check_character(character)
   priorities = {
     '(' => 0,
-      '+' => 1, '-' => 1, ')' => 1,
-     '*' => 2, '/' => 2, '%' => 2,
-     '^' => 3
+    '+' => 1, '-' => 1, ')' => 1,
+    '*' => 2, '/' => 2, '%' => 2,
+    '^' => 3
   }
   case
-  when @stack.last == character
-    return
   when character =~ /\d/ 
     @buffer += character
     return

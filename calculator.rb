@@ -8,15 +8,24 @@ def input
 end
 
 def analyze(equasion)
+  priorities = ['(', '+', '-', ')', '*', '/', '%', '^']
   @output = []
   @stack = []
   @buffer = ""
   @had_a_dot = false
+  @last_character = ""
   for i in equasion
     if i != " "
-    result = check_character(i)
-    # puts "Character: #{i}, Output buffer: #{@output}, Stack buffer #{@stack}, Character buffer: #{@buffer}"
-    break if result == true
+      case
+      when priorities.include?(@last_character) && i == '-'
+        @buffer = "-"
+        @last_character = i
+      else
+        result = check_character(i)
+        @last_character = i
+        # puts "Character: #{i}, Output buffer: #{@output}, Stack buffer #{@stack}, Character buffer: #{@buffer}"
+        break if result == true
+      end
     end
   end
   equasion = nil
